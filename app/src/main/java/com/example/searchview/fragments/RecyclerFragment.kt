@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,7 +30,6 @@ class RecyclerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         init()
         listeners()
-        userAdapter.submitList(listOfUsers.toList())
     }
 
     private fun init() {
@@ -39,7 +37,7 @@ class RecyclerFragment : Fragment() {
             layoutManager = GridLayoutManager(context, 3)
             adapter = userAdapter
         }
-
+        userAdapter.submitList(listOfUsers.toList())
     }
 
     private fun listeners() {
@@ -60,7 +58,6 @@ class RecyclerFragment : Fragment() {
                 userAdapter.filter.filter(charSequence.toString())
                 userAdapter.submitList(filteredList.toList())
             }
-
             override fun afterTextChanged(editable: Editable) {}
         })
     }
@@ -69,9 +66,7 @@ class RecyclerFragment : Fragment() {
         super.onDestroy()
         binding = null
     }
-
 }
-
 
 
 
