@@ -13,7 +13,7 @@ class ProfileFragment : Fragment() {
 
     private val args: ProfileFragmentArgs by navArgs()
 
-    private var binding : FragmentProfileBinding? = null
+    private var binding: FragmentProfileBinding? = null
 
 
     override fun onCreateView(
@@ -33,6 +33,10 @@ class ProfileFragment : Fragment() {
         binding?.tvUserDescription?.text = args.description
 
 
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }

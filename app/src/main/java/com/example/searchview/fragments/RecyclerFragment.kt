@@ -58,12 +58,13 @@ class RecyclerFragment : Fragment() {
                 userAdapter.filter.filter(charSequence.toString())
                 userAdapter.submitList(filteredList.toList())
             }
+
             override fun afterTextChanged(editable: Editable) {}
         })
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding = null
     }
 }
